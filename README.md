@@ -35,6 +35,51 @@ React JS Fundamentals Course 2021
 </ul>
 </p>
 
+<h3>클래스형 컴포넌트</h3>
+<p>
+state : 동적 데이터를 다룰 때 사용 
+ -> state를 사용하기 위해 클래스형 컴포넌트 사용<br>
+ -> state를 직접 변경하는 경우 render() 함수를 다시 실행하지 않아 setState() 함수로 state값 변경<br>
+constructor() 함수 : render() 함수보다 먼저 실행
+componentDidMount() 함수 : render() 함수 이후 실행
+*실행 순서 : constructor -> render -> componentDidMount
+componentDidUpdate() 함수 : 화면이 업데이트되면 실행
+**실행 순서 : setState -> render -> componentDidUpdate
+componentWillUnmount() 함수 : 컴포넌트가 화면에서 떠날 때 실행 -> 보통 컴포넌트에 적용할 이벤트 리스너를 제거할 때 많이 사용
+ 
+<pre><code>
+import React from 'react';
+
+class App extends React.Component {
+
+ state = {
+  count = 0;
+ }; //state는 객체 형태의 데이터
+ 
+ add = () => { //count: this.state.count+1로 state를 업데이트하지 않고, 인자(current)를 받아 객체(count: current.count+1) 반환하는 함수를 작성해 setState() 함수에 전달
+  this.setState(current => ({ //current에는 현재 state가 넘어오고
+   count: current.count+1, //그 state의 count에 1을 더함 
+  }));
+ };
+ 
+ render(){
+  return( ... );
+ }
+}
+
+export default App;
+</pre></code>
+</p>
+
+<div>
+<h3>ch08. 여러 기능 추가</h3>
+<div>
+<h4>react-router-dom</h4>
+<p>
+ 라우터 : url에 맞게 이동시켜주는 장치
+</p>
+</div>
+
 <h3>실행</h3>
 <a href="https://winkite1226.github.io/movie_app_2021/#/">play</a>
 
